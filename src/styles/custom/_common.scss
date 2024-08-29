@@ -1,0 +1,93 @@
+[type='text'][name='email'],
+[type='tel'],
+[type='url'],
+[type='email'],
+[type='number'],
+code {
+    direction: ltr;
+}
+html[dir='rtl'] {
+    [type='text'][name='email'],
+    [type='tel'],
+    [type='url'],
+    [type='email'],
+    [type='number'] {
+        text-align: end;
+    }
+}
+
+.hide-desktop {
+    display: none !important;
+
+    @media screen and (max-width: 1320px) {
+        display: inline-block !important;
+    }
+}
+
+.hide-mobile {
+    display: none !important;
+
+    @media screen and (min-width: 1320px) {
+        display: inline-block !important;
+    }
+}
+
+hr {
+    &.hide-desktop {
+        display: none !important;
+
+        @media screen and (max-width: 1320px) {
+            display: block !important;
+        }
+    }
+
+    &.hide-mobile {
+        display: none !important;
+
+        @media screen and (min-width: 1320px) {
+            display: block !important;
+        }
+    }
+
+    margin: 0.5rem 0 !important;
+}
+
+.alert-dismissible .btn-close {
+    inset-inline-start: unset !important;
+}
+
+.overflow-wrap-break-word {
+    overflow-wrap: break-word;
+}
+
+nav.navbar {
+    .nav-pills .nav-item.dropdown .nav-link.dropdown-toggle {
+        padding: 0.5rem;
+    }
+}
+
+.remaining-width {
+    margin-inline-start: 220px;
+    @media screen and (min-width: 768px) {
+        width: calc(100vw - 220px) !important;
+    }
+    &.content-pushed {
+        min-width: 100%;
+    }
+}
+
+.full-width {
+    width: calc(100vw);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+.capitalize-first-letter::first-letter {
+    text-transform: capitalize;
+}

@@ -1,0 +1,10 @@
+.sidebar-container {
+    min-width: 300px;
+    max-width: 21%;
+}
+.page-container {
+    width: 100%;
+    @media (min-width: 576px) {
+        width: 509px;
+    }
+}

@@ -1,0 +1,115 @@
+<div class="position-relative group-created-msg-container" *ngIf="isNewGroup">
+    <img class="position-absolute duck-image" src="assets/images/duck.svg" />
+    <div class="position-absolute fs-5 fs-sm-3 lh-1 chat-bubble bg-golden text-black p-3 w-100 font-windsor bold">
+        Your group <span class="font-windsor bolder">`{{ booking?.group?.name }}`</span> has been created!
+    </div>
+</div>
+<div class="page-content my-5" [ngClass]="{ 'pt-8': isNewGroup }">
+    <div class="booking-container py-5 px-4 px-sm-5 bg-darkgray mt-3 mt-sm-5">
+        <span class="d-block fs-3"
+            >Booking code: <b>{{ booking?.reservationId }}</b></span
+        >
+        <ng-container *ngIf="qrCodeData">
+            <div class="qr-code-image-loading-indicator position-relative mx-auto my-4 bg-white rounded" *ngIf="!qrCodeData.loaded">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="spinner-border text-black spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <img [src]="qrCodeData.uri | safeUrl" class="qr-code-image img-thumbnail my-4 bg-white" *ngIf="qrCodeData.loaded" />
+        </ng-container>
+        <ng-container *ngIf="!booking?.group">
+            <div class="invite-container mb-3">
+                <div class="invite-text-container">
+                    <span
+                        class="d-block fs-4 bolder mb-1"
+                        [innerHTML]="configService.bookingLandingWithoutGroup.bookingTitle | safeHtml"></span>
+                    <span
+                        class="d-block fs-5 px-3"
+                        [innerHTML]="configService.bookingLandingWithoutGroup.bookingSetupLeaderboard | safeHtml"></span>
+                </div>
+                <app-button
+                    [routerLink]="['/', termsAndConditionsRoute]"
+                    [text]="'Create Leaderboard'"
+                    [classes]="'bolder fs-2 fs-sm-3'"
+                    class="btn-block my-5"></app-button>
+                <a class="link-white fs-5" role="button" (click)="shareInvite()" *ngIf="app.isMobile">Share Invite</a>
+                <a class="link-white fs-5" role="button" (click)="downloadInvite()" *ngIf="!app.isMobile">Download Invite</a>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="booking?.group">
+            <div class="invite-container mb-3">
+                <div class="invite-text-container">
+                    <span
+                        class="d-block fs-4 bolder mb-1"
+                        [innerHTML]="configService.bookingLandingWithGroup.bookingTitle | safeHtml"></span>
+                    <span
+                        class="d-block fs-5 px-3"
+                        [innerHTML]="configService.bookingLandingWithGroup.bookingInviteYourMates | safeHtml"></span>
+                </div>
+                <app-button
+                    [text]="'Share Invite'"
+                    [classes]="'bolder'"
+                    class="btn-block my-5"
+                    (onClick)="shareInvite()"
+                    *ngIf="app.isMobile"></app-button>
+                <app-button
+                    [text]="'Download Invite'"
+                    [classes]="'bolder'"
+                    class="btn-block my-5"
+                    (onClick)="downloadInvite()"
+                    *ngIf="!app.isMobile"></app-button>
+                <a class="link-white fs-5" (click)="updateLeaderboardNames()">Update Leaderboard Names</a>
+            </div>
+        </ng-container>
+    </div>
+    <ng-container *ngIf="booking?.group">
+        <div class="wallet-container py-5 px-4 px-sm-5">
+            <div class="text-start lh-sm">
+                <span class="d-block fs-4 fs-sm-3 bold mb-2">Good To Know</span>
+                <span class="d-block fs-5 fs-sm-4">
+                    When you arrive at the venue you'll need to check-in at one of our kiosks to get your group's games cards.<br /><br />
+                    Why not add this ticket to your wallet so you know where to find it when the time comes!
+                </span>
+            </div>
+            <div class="wallet-image-container d-flex justify-content-between mt-5 gap-2">
+                <img
+                    src="assets/images/add_to_apple_wallet-badge.svg"
+                    class="wallet-image img-fluid"
+                    role="button"
+                    (click)="getApplePass()" />
+                <img
+                    src="assets/images/add_to_google_wallet-badge.svg"
+                    class="wallet-image img-fluid"
+                    role="button"
+                    (click)="openGooglePass()" />
+            </div>
+            <img src="assets/images/3-glass-and-ball.svg" class="img-fluid mt-5" />
+        </div>
+        <div class="find-us-container py-5 px-4 px-sm-5 bg-darkgray">
+            <div class="text-start lh-sm">
+                <span class="d-block fs-4 fs-sm-3 bold mb-2 text-uppercase">How To Find Us</span>
+                <span class="d-block fs-5 fs-sm-4">
+                    25-35 Fisherman's Walk<br />
+                    Canary Wharf<br />
+                    London<br />
+                    E14 4DH
+                </span>
+            </div>
+            <img src="assets/images/map-image.png" class="img-fluid mt-5" />
+        </div>
+        <div class="did-you-know-container p-4 p-sm-5">
+            <div class="text-start lh-sm">
+                <span class="d-block fs-4 fs-sm-3 bold mb-2">Did you know?</span>
+                <span class="d-block fs-5 fs-sm-4">
+                    Lorem ipsum dolor sit amet, con- sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
+                    magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobor- tis
+                    nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendre<br /><br />
+                    See you soon!
+                </span>
+            </div>
+            <img src="assets/images/duck.svg" class="img-fluid mt-5" />
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,66 @@
+@import 'variables';
+
+.group-created-msg-container {
+    .duck-image {
+        transform: rotate(160deg) rotateY(180deg);
+        width: 197px;
+        height: 241px;
+        top: -155px;
+        right: -50px;
+        z-index: 1;
+    }
+    .chat-bubble {
+        top: 65px;
+    }
+    .chat-bubble:after {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-width: 0 0 40px 33px;
+        border-color: transparent transparent $golden transparent;
+        top: -33px;
+        right: 130px;
+        transform: rotate(20deg);
+    }
+    @media (max-width: 576px) {
+        .duck-image {
+            transform: rotate(145deg) rotateY(180deg);
+            width: 150px;
+            height: 200px;
+            top: -150px;
+            left: 195px;
+        }
+        .chat-bubble:after {
+            right: 160px;
+        }
+    }
+}
+.page-content {
+    &.pt-8 {
+        padding-top: 8rem;
+    }
+    .booking-container {
+        .qr-code-image,
+        .qr-code-image-loading-indicator {
+            height: 200px;
+            width: 200px;
+        }
+        .qr-code-image-loading-indicator .spinner {
+            width: 3rem;
+            height: 3rem;
+        }
+        .invite-text-container {
+            line-height: 1.25;
+        }
+    }
+    .wallet-image-container {
+        height: 60px;
+        .wallet-image {
+            max-width: 38vw;
+        }
+    }
+    .booking-container,
+    .find-us-container {
+        clip-path: polygon(0 25px, 100% 0%, 100% calc(100% - 25px), 0% 100%);
+    }
+}

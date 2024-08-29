@@ -1,0 +1,61 @@
+<ng-container [ngTemplateOutlet]="useInputGroup ? inputGroupControl : inputAndLabelControl"></ng-container>
+<ng-container [ngTemplateOutlet]="validationErrors"></ng-container>
+<ng-container [ngTemplateOutlet]="noteSection"></ng-container>
+
+<ng-template #labelControl>
+    <label class="form-label" [for]="controlId" *ngIf="showLabel && label">{{ label || 'Field' }}</label>
+</ng-template>
+<ng-template #inputControl>
+    <input
+        [type]="type"
+        [(ngModel)]="value"
+        [attr.id]="controlId"
+        [attr.name]="controlName"
+        [placeholder]="placeholder"
+        class="form-control"
+        [ngClass]="classText"
+        [style]="style"
+        [disabled]="disabled"
+        [readonly]="readonly"
+        [attr.maxlength]="maxlength ? maxlength : null" />
+</ng-template>
+<ng-template #inputAndLabelControl>
+    <ng-container *ngIf="!useFloatingLabel">
+        <ng-container [ngTemplateOutlet]="labelControl"></ng-container>
+        <ng-container [ngTemplateOutlet]="inputControl"></ng-container>
+    </ng-container>
+    <div class="form-floating" *ngIf="useFloatingLabel">
+        <ng-container [ngTemplateOutlet]="inputControl"></ng-container>
+        <ng-container [ngTemplateOutlet]="labelControl"></ng-container>
+    </div>
+</ng-template>
+<ng-template #validationErrors>
+    <div class="invalid-feedback d-block" *ngIf="control?.errors?.profane">
+        <div class="capitalize-first-letter">{{ label || '' }} contains inappropriate words.</div>
+    </div>
+    <div *ngIf="formSubmitted && (control?.errors || $any(control)?.warnings)" class="invalid-feedback d-block">
+        <div *ngIf="control?.errors?.required">{{ label || 'Field' }} required</div>
+        <div *ngIf="control?.errors?.pattern || control?.errors?.email">{{ label || 'Field' }} invalid</div>
+        <div *ngIf="control?.errors?.confirmPasswordNotMatch">Password and Confirm Password must match</div>
+        <div *ngIf="control?.errors?.min">Minimum value must be {{ control?.errors?.min?.min }}</div>
+        <div *ngIf="control?.errors?.max">Maximum value must be {{ control?.errors?.max?.max }}</div>
+        <div *ngIf="control?.errors?.minlength">Minimum length must be {{ control?.errors?.minlength?.requiredLength }}</div>
+        <div *ngIf="control?.errors?.maxlength">Maximum length must be {{ control?.errors?.maxlength?.requiredLength }}</div>
+        <div *ngIf="control?.errors?.duplicate">Duplicate {{ label || '' }} not allowed</div>
+        <div class="text-warning" *ngIf="$any(control)?.warnings?.duplicate">Duplicate {{ label || '' }}</div>
+    </div>
+</ng-template>
+<ng-template #noteSection>
+    <div class="form-text" *ngIf="note">
+        {{ note }}
+    </div>
+</ng-template>
+<ng-template #inputGroupControl>
+    <ng-container [ngTemplateOutlet]="labelControl" *ngIf="!useFloatingLabel"></ng-container>
+    <div class="input-group" [ngClass]="inputGroupClassText">
+        <ng-content select="[prepend]"></ng-content>
+        <ng-container [ngTemplateOutlet]="inputControl" *ngIf="!useFloatingLabel"></ng-container>
+        <ng-container [ngTemplateOutlet]="inputAndLabelControl" *ngIf="useFloatingLabel"></ng-container>
+        <ng-content select="[append]"></ng-content>
+    </div>
+</ng-template>

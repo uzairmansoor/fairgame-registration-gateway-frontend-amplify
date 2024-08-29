@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Fairgame Registration Gateway</title>
+        <base href="/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <script type="text/javascript">
+            const { baseUrl, apiBaseUrl } = getUrls();
+
+            function getUrls() {
+                let baseUrl = window.location.origin;
+                if (baseUrl.includes('localhost')) baseUrl = 'https://fairgame.gwdevices.com';
+                const apiBaseUrl = `${baseUrl}/api/v1`;
+                return { baseUrl, apiBaseUrl };
+            }
+
+            function getQueryParams() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return {
+                    bookingId: urlParams.get('bookingId'),
+                    action: urlParams.get('action'),
+                };
+            }
+
+            function showInvalidLinkAlert() {
+                alert('Invalid link');
+            }
+
+            async function share(bookingId) {
+                if (!navigator.share) return;
+                const link = `${baseUrl}/bookings/${this.booking.reservationId}/invite`;
+                const text = `I'm inviting you to join my group, so that we can play together at Fairgame: ${link}`;
+                try {
+                    await navigator.share({
+                        title: document.title,
+                        text,
+                    });
+                    alert('Successful share');
+                } catch (error) {
+                    alert('Error sharing: ' + error);
+                }
+            }
+
+            async function getGooglePass(bookingId) {
+                try {
+                    const response = await fetch(`${apiBaseUrl}/bookings/${bookingId}/passes/google`, { method: 'POST' });
+                    const { success, data, msg } = await response.json();
+                    if (success && data) {
+                        window.open(data);
+                    } else alert('Error getting Google pass: ' + msg);
+                } catch (error) {
+                    alert('Error getting Google pass: ' + error);
+                }
+            }
+
+            async function getApplePass(bookingId) {
+                try {
+                    const response = await fetch(`${apiBaseUrl}/bookings/${bookingId}/passes/apple`, { method: 'POST' });
+                    const blob = await response.blob();
+                    downloadFile(blob, `${bookingId}_${+new Date()}.pkpass`);
+                } catch (error) {
+                    alert('Error getting Apple pass: ' + error);
+                }
+            }
+
+            function downloadFile(blob, fileName) {
+                const url = URL.createObjectURL(new Blob([blob], { type: blob.type }));
+                const a = document.createElement('a');
+                document.body.appendChild(a);
+                a.setAttribute('style', 'display: none');
+                a.href = url;
+                a.download = fileName;
+                a.click();
+                window.URL.revokeObjectURL(url);
+                a.remove();
+            }
+
+            function checkQueryParamsAndExecuteAction() {
+                const { bookingId, action } = getQueryParams();
+                if (!bookingId || !action) {
+                    showInvalidLinkAlert();
+                    return;
+                }
+                switch (action) {
+                    case 'share':
+                        share(bookingId);
+                        break;
+                    case 'google_pass':
+                        getGooglePass(bookingId);
+                        break;
+                    case 'apple_pass':
+                        getApplePass(bookingId);
+                        break;
+                    default:
+                        showInvalidLinkAlert();
+                        break;
+                }
+            }
+
+            checkQueryParamsAndExecuteAction();
+        </script>
+    </head>
+    <body style="background-color: #000000"></body>
+</html>

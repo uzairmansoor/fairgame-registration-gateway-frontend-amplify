@@ -1,0 +1,40 @@
+<div class="container-fluid g-0 d-sm-flex">
+    <div class="d-none d-sm-block sidebar-container bg-golden position-relative">
+        <div class="sticky-top">
+            <div class="vh-100 position-relative">
+                <div class="logo-container position-absolute top-50 start-50 translate-middle">
+                    <img src="assets/images/fairgame-logo-colored.svg" style="height: 40px" />
+                </div>
+                <div class="footer-container position-absolute bottom-0">
+                    <img src="assets/images/footer-image.svg" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-container text-center mx-sm-auto position-relative" [ngClass]="{ 'vh-100': spinnerService.isSpinnerActive }">
+        <app-spinner *ngIf="spinnerService.isSpinnerActive"></app-spinner>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<!-- <div class="container-fluid g-0">
+    <div class="row g-0">
+        <div class="col-md-3 d-none d-md-block bg-golden">
+            <div class="sticky-top">
+                <div class="vh-100 position-relative">
+                    <div class="logo-container position-absolute top-50 start-50 translate-middle">
+                        <img src="assets/images/fairgame-logo-colored.svg" style="height: 40px" />
+                    </div>
+                    <div class="footer-container position-absolute bottom-0">
+                        <img src="assets/images/footer-image.svg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="page-container text-center mx-sm-auto my-5">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div> -->

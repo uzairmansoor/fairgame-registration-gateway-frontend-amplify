@@ -1,0 +1,54 @@
+<div class="mt-5" *ngIf="booking">
+    <div class="user-container px-4">
+        <div class="text-uppercase bolder lh-1">
+            <span class="d-block fs-1" *ngIf="booking.leadbookerName">{{ booking.leadbookerName }}</span>
+            <span class="d-block fs-4">You're going to</span>
+        </div>
+        <img src="assets/images/fairgame-logo-white.svg" class="fairgame-logo" />
+        <span class="d-block fs-5 lh-1">(Well done you!)</span>
+        <div class="booking-info-container bg-darkgray mt-5 p-4 fs-6 fs-sm-4" *ngIf="booking.eventDate">
+            <p class="text-silver text-start">Your booking is for</p>
+            <div class="booking-datetime-container bg-silver text-black p-3">
+                <p class="mb-0 bolder">
+                    {{ utilService.getReadableDate(booking.eventDate) }}{{ booking.eventTime ? ', ' + booking.eventTime : '' }}
+                </p>
+            </div>
+        </div>
+        <table class="mx-auto my-5 fs-3">
+            <thead>
+                <tr>
+                    <th>Total Players</th>
+                    <th>
+                        <span class="d-block ms-3">{{ booking?.memberCount }}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody *ngIf="booking?.upgrades">
+                <tr *ngIf="booking?.upgrades?.game1">
+                    <td>Game Tickets</td>
+                    <td>
+                        <span class="d-block ms-3">{{ booking?.upgrades?.game1 }}</span>
+                    </td>
+                </tr>
+                <tr *ngIf="booking?.upgrades?.food1">
+                    <td>Food Tokens</td>
+                    <td>
+                        <span class="d-block ms-3">{{ booking?.upgrades?.food1 }}</span>
+                    </td>
+                </tr>
+                <tr *ngIf="booking?.upgrades?.drink1">
+                    <td>Drink Tokens</td>
+                    <td>
+                        <span class="d-block ms-3">{{ booking?.upgrades?.drink1 }}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="duck-image-container position-absolute ms-2">
+        <img class="duck-image" src="assets/images/duck.svg" />
+    </div>
+    <div class="leaderboard-info-container">
+        <app-leaderboard-info [booking]="booking"></app-leaderboard-info>
+    </div>
+</div>

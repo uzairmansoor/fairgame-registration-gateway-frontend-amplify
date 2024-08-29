@@ -1,0 +1,10 @@
+<div class="bg-darkgray rounded-pill buttons-container" *ngIf="buttonSwitchConfig?.options?.length">
+    <button
+        *ngFor="let option of buttonSwitchConfig?.options"
+        class="switch-button rounded-pill btn bold"
+        [ngClass]="buttonSwitchConfig.selectedOption == option.value ? 'btn-white' : 'btn-darkgray'"
+        [disabled]="option.disabled"
+        (click)="onSelectOption(option)">
+        {{ option.text }}
+    </button>
+</div>

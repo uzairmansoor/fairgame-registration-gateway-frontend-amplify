@@ -1,0 +1,44 @@
+<div class="mt-5">
+    <img src="assets/images/fairgame-logo-white.svg" class="fairgame-logo mb-4" />
+    <span class="d-block lh-1 fs-1 bolder text-uppercase px-3">Create your leaderboard</span>
+    <span class="d-block lh-sm fs-5 mt-3 px-3">
+        Group and player names will <br />
+        appear on your games cards <br />
+        and leaderboards, so make them <br />
+        memorable and keep them clean! <br />
+        Then <a class="link-white" (click)="shareInvite()">share invite</a> with your team.
+    </span>
+    <form [formGroup]="formGroup" (ngSubmit)="submit()" class="px-3 px-sm-5" scrollToInvalidControl>
+        <span class="d-block fs-4 bold my-4"> Group Name</span>
+        <app-input [label]="'Group name'" formControlName="groupName" [placeholder]="'Enter Group Name'"></app-input>
+        <span class="d-block fs-4 bold my-4"> Player Names</span>
+        <div class="d-flex flex-column gap-4" formArrayName="members">
+            <ng-container *ngFor="let _ of members.controls; let i = index" [formGroupName]="i">
+                <div class="d-flex bg-darkgray ps-2">
+                    <div class="bg-white text-black rounded-circle player-number-container position-relative">
+                        <span class="position-absolute top-50 start-50 translate-middle bolder">{{ i + 1 }}</span>
+                    </div>
+                    <app-input
+                        formControlName="nickname"
+                        [placeholder]="'Enter Player Name'"
+                        class="w-100"
+                        [maxlength]="18"
+                        [label]="'player name'"></app-input>
+                </div>
+            </ng-container>
+        </div>
+        <span class="d-block text-golden fs-3 mt-4" *ngIf="message">{{ message }}</span>
+        <app-button
+            [type]="'submit'"
+            [text]="'Update Leaderboard'"
+            [classes]="'bolder fs-2 fs-sm-3 ' + (message ? 'mt-4' : 'mt-5')"
+            class="btn-block"
+            [disabled]="!!booking.group && !formGroup.dirty"></app-button>
+
+        <a class="d-block link-white my-3 fs-3" (click)="shareInvite()">Share Invite</a>
+    </form>
+    <div class="teddy-container position-relative w-100 mt-5">
+        <div class="bg-container bg-golden h-100"></div>
+        <img src="assets/images/teddy-black-bottom.svg" class="teddy-img" />
+    </div>
+</div>

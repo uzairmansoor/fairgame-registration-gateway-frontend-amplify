@@ -1,0 +1,12 @@
+<ng-container [ngTemplateOutlet]="hostTemplate"></ng-container>
+<ng-template #hostTemplate>
+    <div
+        *ngIf="spinnerService.loading$ | async"
+        class="w-100 h-100 spinner-container position-absolute top-50 start-50 translate-middle d-flex align-items-center justify-content-center flex-column gap-3">
+        <!-- <img src="assets/images/fairgame-logo-fg-yellow.svg" class="spinner-image" /> -->
+        <div class="spinner-border text-golden" style="width: 5rem; height: 5rem" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="d-block fs-1 lh-1" *ngIf="spinnerService.loadingText" [innerHTML]="spinnerService.loadingText"></span>
+    </div>
+</ng-template>

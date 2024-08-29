@@ -1,0 +1,123 @@
+.invite-container {
+    background-color: #292929;
+    .invite-header-image {
+        width: 100%;
+        max-width: 600px;
+    }
+    .booking-info-container {
+        width: 85%;
+        max-width: 450px;
+        hr {
+            background-color: black;
+            border-color: black;
+            color: black;
+            height: 2px;
+            opacity: 0.5;
+        }
+        .booking-datetime-container {
+            background-color: #efd566;
+            .booking-date {
+                font-size: 18px;
+            }
+            .booking-time {
+                font-size: 12px;
+            }
+            @media (min-width: 576px) {
+                .booking-date {
+                    font-size: 22px;
+                }
+                .booking-time {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .teddy-container {
+        height: 130px;
+        .bg-container {
+            clip-path: polygon(0 60%, 100% 25%, 100% 100%, 0 100%);
+        }
+        .teddy-img {
+            height: 100px;
+            position: absolute;
+            top: -5px;
+            left: 40px;
+        }
+    }
+    .guide-steps-container {
+        clip-path: polygon(0 50px, 100% 0%, 100% calc(100%), 0% 100%);
+        max-width: 600px;
+        margin-top: -50px;
+        ol {
+            max-width: 325px;
+            counter-reset: my-counter;
+            list-style: none;
+            padding-top: 60px;
+            padding-bottom: 10px;
+            padding-left: 0px;
+
+            li {
+                margin: 0 0 0.5rem 0;
+                counter-increment: my-counter;
+                position: relative;
+                margin-bottom: 32px;
+            }
+            li::before {
+                content: counter(my-counter);
+                color: #efc400;
+                font-family: 'Basetica Bulb Yellow', sans-serif;
+                font-size: 2.5rem;
+                font-weight: bold;
+                position: absolute;
+                --size: 50px;
+                left: calc(-1 * var(--size) + 55px);
+                width: 35px;
+                height: var(--size);
+                top: 0;
+                transform: rotate(-10deg);
+                background: #303030;
+                border-radius: 5%;
+                text-align: center;
+                box-shadow: 1px 1px 0 #999;
+                line-height: var(--size);
+                @media (min-width: 576px) {
+                    line-height: 1;
+                }
+            }
+            li:nth-child(even):before {
+                transform: rotate(10deg);
+            }
+        }
+        .wallet-buttons {
+            img {
+                width: 135px;
+                height: 50px;
+            }
+        }
+    }
+    .in-your-package-container {
+        .glass-and-ball-img {
+            width: 80px;
+        }
+    }
+    .find-us-container {
+        clip-path: polygon(0 25px, 100% 0%, 100% 100%, 0% 100%);
+    }
+    .when-you-arrive-container {
+        .qr-code-image,
+        .qr-code-image-loading-indicator {
+            height: 200px;
+            width: 200px;
+        }
+        .qr-code-image-loading-indicator .spinner {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+    .age-policy-container {
+        clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%);
+        img {
+            height: 130px;
+        }
+    }
+}

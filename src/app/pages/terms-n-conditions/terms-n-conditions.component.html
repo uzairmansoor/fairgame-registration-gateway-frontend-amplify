@@ -1,0 +1,38 @@
+<div class="position-relative">
+    <app-button [iconOnly]="true" class="back-button" backButton>
+        <img src="assets/images/back-button.svg" prepend />
+    </app-button>
+    <div class="px-4 px-sm-5">
+        <div class="tnc-container pt-5">
+            <div class="tnc-heading-container mt-4 lh-1 fs-1 bolder">
+                TERMS + <br />
+                CONDITIONS
+            </div>
+            <div
+                class="tnc-content-container mt-5 bg-darkgray px-4 py-5 mb-5 text-start"
+                [innerHTML]="utilService.termsAndConditions"></div>
+        </div>
+        <div class="switch-container text-start mb-5">
+            <app-switch
+                [isReverse]="true"
+                [(ngModel)]="receiveUpdates"
+                id="swReceiveUpdates"
+                [label]="'I want to receive news, events and latest updates from Fairgame'"
+                [wrapperClass]="'my-3'">
+            </app-switch>
+            <app-switch
+                [isReverse]="true"
+                [(ngModel)]="agreeToTnc"
+                id="swAgreeToTnc"
+                [label]="'I have read and agree to the terms and conditions for Fairgame'"
+                [wrapperClass]="'my-3'">
+            </app-switch>
+        </div>
+        <app-button
+            [text]="'Continue'"
+            [classes]="'bolder fs-2 fs-sm-3 mb-5'"
+            class="btn-block"
+            [disabled]="!agreeToTnc"
+            (onClick)="continue()"></app-button>
+    </div>
+</div>

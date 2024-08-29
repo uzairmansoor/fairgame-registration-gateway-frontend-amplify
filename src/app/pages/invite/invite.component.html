@@ -1,0 +1,171 @@
+<div class="invite-container">
+    <img src="assets/images/invite-header.jpg" class="invite-header-image" />
+    <span class="d-block fs-5 fs-sm-4 lh-1 py-4">{{ booking.leadbookerName?.split(' ')?.[0] }} has invited you to Fairgame!</span>
+    <div class="booking-info-container bg-golden text-dark mx-auto position-relative p-4 lh-1">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <span class="star fs-4 fs-sm-3">★</span>
+            <span class="d-block ff-basetica-bulb-charcoal fs-5 fs-sm-4">EVENT INFORMATION</span>
+            <span class="star fs-4 fs-sm-3">★</span>
+        </div>
+        <hr />
+        <div class="booking-datetime-container py-3 my-3">
+            <span class="d-block booking-date bolder">{{ booking.formattedEventDate }}</span>
+            <span class="d-block booking-time bold mt-3">
+                Arrival time: {{ booking.eventTime }}&nbsp;&nbsp;|&nbsp;&nbsp;Game time: {{ booking.gameTime }}
+            </span>
+        </div>
+        <div class="booking-package">
+            <span class="d-block bolder fs-4">Your Package</span>
+            <div class="booking-package-details d-flex flex-column mt-2" style="line-height: 1.25">
+                <span class="d-block bold" *ngIf="booking.upgrades?.game1">
+                    Game Tickets: <span class="bolder">{{ booking.upgrades?.game1 }}</span>
+                </span>
+                <span class="d-block bold" *ngIf="booking.upgrades?.food1">
+                    Food Tokens: <span class="bolder">{{ booking.upgrades?.food1 }}</span>
+                </span>
+                <span class="d-block bold" *ngIf="booking.upgrades?.drink1">
+                    Drink Tokens: <span class="bolder">{{ booking.upgrades?.drink1 }}</span>
+                </span>
+            </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <span class="star fs-4 fs-sm-3">★</span>
+            <span class="d-block fs-6 fs-sm-5">
+                Reservation ID: <span class="bolder">{{ booking.reservationId }}</span>
+            </span>
+            <span class="star fs-4 fs-sm-3">★</span>
+        </div>
+    </div>
+    <div class="teddy-container position-relative w-100 mt-5">
+        <div class="bg-container bg-golden h-100"></div>
+        <img src="assets/images/teddy-black-bottom.svg" class="teddy-img" />
+    </div>
+    <div class="guide-steps-container bg-golden text-dark mx-auto">
+        <ol class="mx-auto mb-0">
+            <li>
+                <div class="step">
+                    <span class="d-block step-title bolder fs-3">Add To Wallet</span>
+                    <span class="d-block lh-sm my-2 fs-5">
+                        You can now add <br />
+                        your tickets to your wallet, <br />so you'll know exactly where <br />to find it when you arrive!
+                    </span>
+                    <div class="wallet-buttons">
+                        <img src="assets/images/add_to_apple_wallet-badge.svg" (click)="getApplePass()" />
+                        <img src="assets/images/add_to_google_wallet-badge.svg" (click)="openGooglePass()" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="step">
+                    <span class="d-block step-title bolder fs-3">Roll-up! Roll-up!</span>
+                    <span class="d-block lh-sm my-2 fs-5">
+                        We can't wait to see you! <br />
+                        The date and time of your event <br />
+                        is displayed above and there's <br />
+                        a map to show you where <br />
+                        to find us below.
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="step">
+                    <span class="d-block step-title bolder fs-3">Good To Know</span>
+                    <span class="d-block lh-sm my-2 fs-5">
+                        You will receive a <br />
+                        personalised games card <br />
+                        on arrival, this will give you access <br />
+                        to the games and leaderboards <br />
+                        and are dispensed from our <br />
+                        self-service kiosks. <br />
+                        <br />
+                        Please note that you may need to <br />
+                        show the QR code on your ticket <br />
+                        (it's also at the bottom of this invite) <br />
+                        if your host hasn't already <br />
+                        registered you.
+                    </span>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="in-your-package-container text-center mt-5">
+        <img src="assets/images/3-glass-and-ball.svg" class="img-fluid glass-and-ball-img mb-5" />
+        <span class="d-block bolder fs-4">In Your Package</span>
+        <div class="fs-5 lh-sm my-2">
+            <span class="d-block">
+                1x game ticket gets you 9 game<br />
+                credits (1 for each game).
+            </span>
+            <span class="d-block mt-2">
+                Game credits are applied to<br />
+                the games card you'll receive<br />
+                from our kiosks.
+            </span>
+            <span class="d-block mt-2 fs-3">★</span>
+            <span class="d-block mt-2">
+                1x food token gets you 1 main<br />
+                food item from our token menu<br />
+                from any of our food vendors.
+            </span>
+            <span class="d-block mt-2 fs-3">★</span>
+            <span class="d-block mt-2">
+                1x drink token gets you 1 drink<br />
+                from our token menu at any<br />
+                of our bars.
+            </span>
+        </div>
+    </div>
+    <div class="find-us-container bg-golden text-dark py-5 px-4 px-sm-5 mt-5">
+        <div class="text-start lh-sm">
+            <span class="d-block fs-4 fs-sm-3 bolder mb-2 text-uppercase">How To Find Us</span>
+            <span class="d-block fs-5 fs-sm-4 bold">
+                25-35 Fisherman's Walk<br />
+                Canary Wharf<br />
+                London<br />
+                E14 4DH
+            </span>
+            <span class="d-block fs-5 fs-sm-4 mt-2 bold"> TEL: 020 4599 3666 </span>
+        </div>
+        <img src="assets/images/map-image.png" class="img-fluid mt-5" />
+    </div>
+    <div class="when-you-arrive-container py-5">
+        <span class="d-block bolder fs-4">When You Arrive</span>
+        <div class="fs-5 lh-sm my-2">
+            <span class="d-block">
+                If you haven't downloaded the<br />
+                ticket to your wallet, you can scan<br />
+                the QR code below at one of our<br />
+                kiosks to check-in.
+            </span>
+            <span class="d-block mt-2">
+                Alternatively you can use the<br />
+                Reservation ID.
+            </span>
+        </div>
+        <ng-container *ngIf="qrCodeData">
+            <div class="qr-code-image-loading-indicator position-relative mx-auto my-4 bg-white rounded" *ngIf="!qrCodeData.loaded">
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    <div class="spinner-border text-black spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <img [src]="qrCodeData.uri | safeUrl" class="qr-code-image img-thumbnail my-4 bg-white" *ngIf="qrCodeData.loaded" />
+        </ng-container>
+        <span class="d-block fs-4">
+            Reservation ID: <span class="bolder">{{ booking.reservationId }}</span>
+        </span>
+    </div>
+    <div class="age-policy-container bg-golden text-dark p-4 pt-5 p-sm-5">
+        <div class="text-start lh-sm">
+            <span class="d-block fs-4 fs-sm-3 bold mb-2">Age Policy</span>
+            <span class="d-block fs-5 fs-sm-4">
+                Fairgame is an adults-only venue.<br />
+                You must be 18+ to experience a<br />
+                ride like this one.
+            </span>
+        </div>
+        <img src="assets/images/duck-fairgame-strip.png" class="img-fluid" />
+    </div>
+</div>

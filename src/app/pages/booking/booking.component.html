@@ -1,0 +1,6 @@
+<div [ngClass]="{ 'mt-5': !removeTopMargin }" *ngIf="!isLoading">
+    <div class="px-4 text-uppercase bolder lh-1 fs-2" *ngIf="err">
+        <span class="d-block">{{ err }}</span>
+    </div>
+</div>
+<router-outlet></router-outlet>

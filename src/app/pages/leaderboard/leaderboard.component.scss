@@ -1,0 +1,25 @@
+@import 'variables';
+.fairgame-logo {
+    height: 20px;
+    @media (min-width: 576px) {
+        height: 30px;
+    }
+}
+.player-number-container {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    margin-top: 6px;
+}
+.teddy-container {
+    height: 130px;
+    .bg-container {
+        clip-path: polygon(0 60%, 100% 25%, 100% 100%, 0 100%);
+    }
+    .teddy-img {
+        height: 100px;
+        position: absolute;
+        top: -5px;
+        left: 40px;
+    }
+}

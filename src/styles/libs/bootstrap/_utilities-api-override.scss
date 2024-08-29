@@ -1,0 +1,16 @@
+$additional-utilities: 'font-size', 'width';
+
+@each $util in $additional-utilities {
+    $utilities: map-merge(
+        $utilities,
+        (
+            $util:
+                map-merge(
+                    map-get($utilities, $util),
+                    (
+                        responsive: true,
+                    )
+                ),
+        )
+    );
+}

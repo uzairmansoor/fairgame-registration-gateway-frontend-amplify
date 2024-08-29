@@ -1,0 +1,21 @@
+<ng-container [ngTemplateOutlet]="hostTemplate"></ng-container>
+<ng-template #hostTemplate>
+    <div class="form-check form-switch" [ngClass]="wrapperClassText" [style]="wrapperStyle">
+        <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            [attr.id]="controlId"
+            [attr.name]="controlName"
+            [ngClass]="classText"
+            [style]="style"
+            [(ngModel)]="value"
+            [disabled]="disabled"
+            [readonly]="readonly"
+            (change)="preventDefault($event)" />
+        <label class="form-check-label cursor-pointer" [for]="controlId" *ngIf="label">{{ label || 'Field' }}</label>
+    </div>
+    <div *ngIf="formSubmitted && control?.errors" class="invalid-feedback d-block">
+        <div *ngIf="control?.errors?.required">{{ label || 'Field' }} required</div>
+    </div>
+</ng-template>

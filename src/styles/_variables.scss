@@ -1,0 +1,33 @@
+$golden: #efc400;
+$silver: #c8c8c8;
+$darkgray: #333333;
+
+$custom-colors: (
+    'golden': $golden,
+    'silver': $silver,
+    'lightgray': #e6e6e6,
+    'darkgray': $darkgray,
+    'pink': #ff94b2,
+    'white': #ffffff,
+    'black': #000000,
+);
+
+// Switch variables
+$form-check-input-bg: $silver;
+$form-switch-width: 4.5em;
+$form-switch-bg-image: url("data:image/svg+xml,<svg viewBox='-4 -4 8 8' xmlns='http://www.w3.org/2000/svg'><circle r='3' fill='#fff' stroke='#000' style='paint-order:stroke'/></svg>");
+$form-switch-checked-bg-image: $form-switch-bg-image;
+$form-switch-intemediate-bg-image: $form-switch-bg-image;
+$form-switch-focus-bg-image: $form-switch-bg-image;
+
+// Input variables
+$input-padding-x: 24px;
+$input-padding-y: 12px;
+$input-font-size: 18px;
+$input-bg: $darkgray;
+$input-border-color: $darkgray;
+$input-border-height: 0;
+$input-border-radius: 0;
+$input-focus-border-color: $darkgray;
+$input-focus-box-shadow: none;
+$input-placeholder-color: #e6e6e68a;

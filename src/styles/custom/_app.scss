@@ -1,0 +1,156 @@
+html,
+body,
+:root {
+    --bs-body-font-family: 'Basetica', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial,
+        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --bs-body-color: var(--bs-white);
+    --bs-body-bg: var(--bs-black);
+}
+
+.bold {
+    font-family: 'Basetica Bold';
+}
+.bolder {
+    font-family: 'Basetica Bolder';
+}
+
+.ff-basetica-bulb-charcoal {
+    font-family: 'Basetica Bulb Charcoal';
+}
+
+.font-windsor {
+    font-family: 'Windsor';
+    &.bold {
+        font-family: 'Windsor Bold';
+        &.font-condensed {
+            font-family: 'Windsor Bold Condensed';
+        }
+    }
+    &.bolder {
+        font-family: 'Windsor Bolder';
+    }
+}
+
+button {
+    &.custom-button,
+    &.switch-button {
+        &:not(.icon-only) {
+            padding: 12px 24px;
+        }
+    }
+    &.custom-button:not(.icon-only) {
+        font-size: 30px;
+        line-height: 36px;
+    }
+    &.switch-button {
+        font-size: 21px;
+        line-height: 29.4px;
+    }
+}
+
+.form-switch {
+    .form-check-input {
+        height: 2.5em;
+        margin: auto;
+    }
+    .form-check-label {
+        text-align: start;
+        line-height: 1.25;
+    }
+}
+
+.invalid-feedback {
+    color: var(--bs-pink);
+}
+app-input {
+    text-align: start;
+    .is-invalid {
+        padding-right: $input-padding-x !important;
+        background-image: unset !important;
+        border-width: 0 !important;
+        box-shadow: none !important;
+    }
+}
+
+// html,
+// body {
+//     font-size: 0.95rem;
+//     width: 100vw;
+//     min-height: 100vh;
+//     position: relative;
+//     -webkit-font-smoothing: auto;
+//     -moz-osx-font-smoothing: auto;
+//     overflow-x: hidden;
+// }
+
+// @media screen and (max-width: 1023px) {
+//     input.form-control[formcontrolname='search'] {
+//         padding-inline-start: calc(0.75rem) !important;
+//         border-inline-end: 0;
+//     }
+// }
+
+// input[type='date']::-webkit-calendar-picker-indicator {
+//     background: transparent;
+//     bottom: 0;
+//     color: transparent;
+//     cursor: pointer;
+//     height: auto;
+//     left: 0;
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     width: auto;
+// }
+
+// .pages-container {
+//     padding-top: $navbar-height;
+// }
+
+// X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+// h1,
+// h2 {
+//     font-weight: 600 !important;
+// }
+// h1 {
+//     font-size: 33px !important;
+//     line-height: 42px !important;
+// }
+
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//     h1 {
+//         font-size: 42px !important;
+//         line-height: 50.4px !important;
+//     }
+// }
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//     h1 {
+//         font-size: 49px !important;
+//         line-height: 58.8px !important;
+//     }
+// }
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//     h1 {
+//         font-size: 56px !important;
+//         line-height: 67.2px !important;
+//     }
+// }
+// // X-Large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//     h1 {
+//         font-size: 60px !important;
+//         line-height: 72px !important;
+//     }
+// }
+// // XX-Large devices (larger desktops, 1400px and up)
+// @media (min-width: 1400px) {
+//     h1 {
+//         font-size: 64px !important;
+//         line-height: 76.8px !important;
+//     }
+// }

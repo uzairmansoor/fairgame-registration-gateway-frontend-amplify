@@ -1,0 +1,14 @@
+// styles for checkbox, radio, switch
+.form-check {
+    @each $color, $value in $theme-colors {
+        &.form-check-#{$color} .form-check-input {
+            &:checked {
+                background-color: var(--bs-#{$color});
+                border-color: var(--bs-#{$color});
+            }
+            &:focus {
+                border-color: var(--bs-#{$color});
+            }
+        }
+    }
+}

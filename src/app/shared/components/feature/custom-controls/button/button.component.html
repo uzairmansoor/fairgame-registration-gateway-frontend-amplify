@@ -1,0 +1,14 @@
+<button
+    [type]="type"
+    class="custom-button btn btn-{{ currentBgColor }} {{ classes }}"
+    [ngClass]="{ 'rounded-pill': !iconOnly, 'rounded-circle icon-only lh-1  p-2 fs-4': iconOnly }"
+    (mouseenter)="currentBgColor = 'golden'"
+    (mouseleave)="currentBgColor = bgColor"
+    [disabled]="disabled"
+    (click)="onClick.emit()">
+    <!-- (focus)="bgColor = 'lightgray'"
+    (blur)="bgColor = 'white'" -->
+    <ng-content select="[prepend]"></ng-content>
+    <ng-container *ngIf="!iconOnly">{{ text }}</ng-container>
+    <ng-content select="[append]"></ng-content>
+</button>
